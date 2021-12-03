@@ -5,8 +5,10 @@
 This python script automates the process of getting NVFBC plugin in OBS using [obs-nvfbc](https://gitlab.com/fzwoch/obs-nvfbc) and [nvidia-patch](https://github.com/keylase/nvidia-patch).
 ## Usage
 #### Open a terminal and run this command for your distro: 
-Debian based (Ubuntu, Linux Mint, Pop!_OS, elementary OS, MX Linux, Zorin OS etc.): ``sudo apt install python3 git``
-Arch based (Manjaro, EndeavourOS, Garuda Linux, Artix, Arco etc.): `sudo pacman -S python3 git`
+Debian based (Ubuntu, Linux Mint, Pop!_OS, elementary OS, MX Linux, Zorin OS etc.): 
+``sudo apt install python3 git``
+Arch based (Manjaro, EndeavourOS, Garuda Linux, Artix, Arco etc.): 
+`sudo pacman -S python3 git`
 Fedora: `sudo dnf install python3 git`
 openSUSE: `sudo zypper install python3 git`
 Solus: `sudo eopkg install python3 git`
