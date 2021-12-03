@@ -11,7 +11,7 @@ Arch based (Manjaro, EndeavourOS, Garuda Linux, Artix, Arco etc.): \
 `sudo pacman -S python3 git` \
 Fedora: `sudo dnf install python3 git` \
 openSUSE: `sudo zypper install python3 git` \
-Solus: `sudo eopkg install python3 git` \
+Solus: `sudo eopkg install python3 git`
 #### Then:
 `git clone https://github.com/Liniuta/obs-nvfbc-patch` \
 ` cd obs-nvfbc-patch` \
