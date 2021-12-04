@@ -1,5 +1,5 @@
 # OBS NVFBC Patch
-[![Fork Repo](https://img.shields.io/github/forks/a01sa01to/obs-nvfbc-patch?style=social&maxAge=3600)](https://github.com/Liniuta/obs-nvfbc-patch/fork)  [![Issues](https://img.shields.io/github/issues/a01sa01to/obs-nvfbc-patch?maxAge=3600, "Issues")](https://github.com/Liniuta/obs-nvfbc-patch/issues) [![MIT License](https://img.shields.io/github/license/a01sa01to/obs-nvfbc-patch?maxAge=3600, "License")](https://github.com/Liniuta/obs-nvfbc-patch/blob/master/LICENSE) 
+[![Fork Repo](https://img.shields.io/github/forks/Liniuta/obs-nvfbc-patch?style=social&maxAge=3600)](https://github.com/Liniuta/obs-nvfbc-patch/fork)  [![Issues](https://img.shields.io/github/issues/Liniuta/obs-nvfbc-patch?maxAge=3600, "Issues")](https://github.com/Liniuta/obs-nvfbc-patch/issues) [![MIT License](https://img.shields.io/github/license/Liniuta/obs-nvfbc-patch?maxAge=3600, "License")](https://github.com/Liniuta/obs-nvfbc-patch/blob/master/LICENSE) 
 
 ## What's this?
 This python script automates the process of getting NVFBC plugin in OBS using [obs-nvfbc](https://gitlab.com/fzwoch/obs-nvfbc) and [nvidia-patch](https://github.com/keylase/nvidia-patch).
