@@ -13,9 +13,11 @@ Fedora: `sudo dnf install python3 git` \
 openSUSE: `sudo zypper install python3 git` \
 Solus: `sudo eopkg install python3 git`
 #### Then:
-`git clone https://github.com/Liniuta/obs-nvfbc-patch` \
-` cd obs-nvfbc-patch` \
-` python3 obs-patch.py`
+```yaml
+git clone https://github.com/Liniuta/obs-nvfbc-patch
+cd obs-nvfbc-patch
+python3 obs-patch.py
+```
 #### and follow the instructions. 
 
 ## License
