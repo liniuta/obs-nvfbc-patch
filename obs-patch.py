@@ -7,7 +7,7 @@ _PACKAGE_MANAGERS = {1: 'apt', 2: 'pacman', 3: 'dnf', 4: 'zypper', 5: 'eopkg', 6
 
 def parse_cmd():
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='script for NVBC Patch into OBS, v1.0.')
+    parser = argparse.ArgumentParser(description='script for NVBC Patch into OBS, v1.1.')
     parser.add_argument('-s', '--silent', action='store_true', default=False,
                         help='set script to be silent and quick. Default False')
     parser.add_argument('-t', '--test', action='store_true', default=False,
@@ -15,20 +15,22 @@ def parse_cmd():
     return parser.parse_args()
 
 
-def print_splash(wait_time=0.5):
+def print_splash(wait_time=1.5):
     print(" __   __   __              __  __   __    __       ___  __")
     print("/  \ |__) (_    |\ | \  / |_  |__) /     |__)  /\   |  /   |__|")
     print("\__/ |__) __)   | \|  \/  |   |__) \__   |    /--\  |  \__ |  |")
     print(" ")
-    print("OBS NVFBC PATCH v1.0")
-    print("github.com/Liniuta/obs-nvfbc-patch")
+    print("OBS NVFBC PATCH v1.1")
+    print("github.com/liniuta/obs-nvfbc-patch")
     print("Getting required variables and loading the program..")
-    print("Make sure you have OBS installed on your system!")
+    print("Make sure you have OBS installed on your system and a network connection!")
     print(" ")
     time.sleep(wait_time)
 
 
 def obs_patch(verbose=True, test=False):
+    username = os.getlogin()
+    working_directory = os.getcwd()
     if verbose and not test:
         print("Starting...")
         print("#" * 30)
@@ -143,9 +145,9 @@ def main(test=False):
 
     if not test:
         os.system(f"sudo {manager} {manager_args} libgl-dev meson ninja-build")
+        obs_patch()
     else:
         print(f"sudo {manager} {manager_args} libgl-dev meson ninja-build")
-    obs_patch(verbose=not silent, test=True)
 
 
 if __name__ == '__main__':
