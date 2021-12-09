@@ -7,7 +7,7 @@ _PACKAGE_MANAGERS = {1: 'apt', 2: 'pacman', 3: 'dnf', 4: 'zypper', 5: 'eopkg', 6
 
 def parse_cmd():
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='script for NVBC Patch into OBS, v1.1.')
+    parser = argparse.ArgumentParser(description='script for NVFBC Patch into OBS, v1.1.')
     parser.add_argument('-s', '--silent', action='store_true', default=False,
                         help='set script to be silent and quick. Default False')
     parser.add_argument('-t', '--test', action='store_true', default=False,
