@@ -1,6 +1,8 @@
 import os
 import time
 import argparse
+import os.path
+import shutil
 
 _PACKAGE_MANAGERS = {1: 'apt', 2: 'pacman', 3: 'dnf', 4: 'zypper', 5: 'eopkg', 6: 'yum'}
 
@@ -60,17 +62,27 @@ def obs_patch(verbose=True, test=False):
         print("#" * 30)
     if not test:
         os.chdir(f"/home/{username}/.config/obs-studio/")
-        os.mkdir("plugins")
-        os.chdir(f"/home/{username}/.config/obs-studio/plugins/")
-        os.mkdir("nvfbc")
-        os.chdir(f"/home/{username}/.config/obs-studio/plugins/nvfbc/")
-        os.mkdir("bin")
-        os.chdir(f"/home/{username}/.config/obs-studio/plugins/nvfbc/bin/")
-        os.mkdir("64bit")
-        os.chdir(working_directory)
-        os.chdir("obs-nvfbc/build/")
-        os.system(f"cp nvfbc.so /home/{username}/.config/obs-studio/plugins/nvfbc/bin/64bit/")
-
+        if os.path.exists(f"/home/{username}/.config/obs-studio/plugins/") == True:
+            os.chdir(f"/home/{username}/.config/obs-studio/plugins/")
+            os.mkdir("nvfbc")
+            os.chdir(f"/home/{username}/.config/obs-studio/plugins/nvfbc/")
+            os.mkdir("bin")
+            os.chdir(f"/home/{username}/.config/obs-studio/plugins/nvfbc/bin/")
+            os.mkdir("64bit")
+            os.chdir(working_directory)
+            os.chdir("obs-nvfbc/build/")
+            os.system(f"cp nvfbc.so /home/{username}/.config/obs-studio/plugins/nvfbc/bin/64bit/")
+        else:
+            os.mkdir("plugins")
+            os.chdir(f"/home/{username}/.config/obs-studio/plugins/")
+            os.mkdir("nvfbc")
+            os.chdir(f"/home/{username}/.config/obs-studio/plugins/nvfbc/")
+            os.mkdir("bin")
+            os.chdir(f"/home/{username}/.config/obs-studio/plugins/nvfbc/bin/")
+            os.mkdir("64bit")
+            os.chdir(working_directory)
+            os.chdir("obs-nvfbc/build/")
+            os.system(f"cp nvfbc.so /home/{username}/.config/obs-studio/plugins/nvfbc/bin/64bit/")
     if verbose and not test:
         time.sleep(2)
         print(" ")
@@ -129,6 +141,21 @@ def get_manager_args(manager):
     else:
         return '-S'
 
+def delete_old_plugin():
+    username = os.getlogin()
+    print(" ")
+    print("#" * 30)
+    print("Deleting old NVFBC plugin..")
+    print("#" * 30)
+    print(" ")
+    file = "nvfbc.so"
+    nvfbc_folder_path = f"/home/{username}/.config/obs-studio/plugins/nvfbc"
+    shutil.rmtree(nvfbc_folder_path)
+    time.sleep(1.5)
+    print("#" * 30)
+    print("Deleted old NVFBC plugin successfully!")
+    print("#" * 30)
+    print(" ")
 
 def main(test=False):
     args = parse_cmd()
@@ -142,10 +169,13 @@ def main(test=False):
     if not silent: time.sleep(1.5)
     manager = get_manager()
     manager_args = get_manager_args(manager)
-
     if not test:
         os.system(f"sudo {manager} {manager_args} libgl-dev meson ninja-build")
-        obs_patch()
+        if os.path.exists(f"/home/{username}/.config/obs-studio/plugins/nvfbc/bin/64bit/nvfbc.so") == True:
+            delete_old_plugin()
+            obs_patch()
+        else:
+            obs_patch()
     else:
         print(f"sudo {manager} {manager_args} libgl-dev meson ninja-build")
 
